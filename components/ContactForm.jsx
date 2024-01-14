@@ -56,8 +56,8 @@ const ContactForm = () => {
     })
     return (
         <>
-            <div className='min-w-80 p-8'>
-                <div className='flex lg:flex-col flex-1 justify-center py-2'>
+            <div className='min-w-60 p-5 flex-col justify-center items-center'>
+                <div className='flex-col flex-1 justify-center py-2'>
                     <h1 className='text-slate-100 text-xl block text-center font-semibold hover:text-yellow-400'>Bizimle iletişime geçin</h1>
                     <hr className='mt-2 text-white font-light' />
                 </div>
