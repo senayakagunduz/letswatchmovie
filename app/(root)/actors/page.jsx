@@ -30,7 +30,7 @@ const Actors = () => {
   },[])
   console.log(datas,"datas")
   return (
-    <div className='flex flex-wrap items-center justify-center gap-2 px-10 bg-slate-900'>
+    <div className='flex items-center justify-center flex-wrap  px-10 bg-slate-900'>
         {
           datas.map((person)=>(
             <div className='flex min-w-[300px] h-full gap-2 mt-10 relative '>
