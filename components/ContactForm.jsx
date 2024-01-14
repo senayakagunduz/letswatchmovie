@@ -19,11 +19,8 @@ const ContactForm = () => {
     }
     const validationSchema = Yup.object({
         name: Yup.string().required("Adınızı giriniz"),
-        // .min(2, 'Too short!').max(50, 'Too Long!')
         email: Yup.string()
             .email("Enter a valid email")
-            // .min(5, "email should be min 5 character!")
-            // .max(50, "Username should be max 50 character!")
             .required("Email is required"),
         subject: Yup.string().required("Lütfen konuyu seçiniz"),
         phone: Yup.string().required("Geçerli bir telefon numarası giriniz"),
@@ -38,6 +35,14 @@ const ContactForm = () => {
             }, 2000)
             console.log("resp", resp)
             setContactInfos(resp.data);
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Mesajınız gönderildi",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            
         } catch (error) {
             console.log(error.message)
         } finally {
@@ -51,10 +56,10 @@ const ContactForm = () => {
     })
     return (
         <>
-            <div className='min-w-80 pe-9 p-8'>
-                <div className='flex flex-1 justify-center py-2'>
+            <div className='min-w-80 p-8'>
+                <div className='flex lg:flex-col flex-1 justify-center py-2'>
                     <h1 className='text-slate-100 text-xl block text-center font-semibold hover:text-yellow-400'>Bizimle iletişime geçin</h1>
-                    <hr className='mt-2 text-white' />
+                    <hr className='mt-2 text-white font-light' />
                 </div>
                 <form noValidate onSubmit={formik.handleSubmit}>
                     <div className='mt-3 flex flex-col flex-1'>
@@ -64,8 +69,6 @@ const ContactForm = () => {
                             id="name"
                             name="name"
                             {...formik.getFieldProps("name")}
-                            // data-isvalid={formik.touched.name && !formik.errors.name}
-                            // isinvalid={formik.touched.name && !!formik.errors.name}
                             className={`mt-1 p-2 ${formik.touched.name && formik.errors.name ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border rounded-md`}
                             placeholder='name'
 

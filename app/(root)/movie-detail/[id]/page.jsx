@@ -14,15 +14,16 @@ const MovieDetail = async ({ params }) => {
     console.log(data)
 
     return (
-        <div className='flex bg-slate-900 h-screen'>
-            <div className='flex'>
-                <div className='flex w-1/2 '>
-                    <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} className='rounded-md pl-20 pb-5' style={{ objectFit: 'cover' }} fill />
+        <div className='flex bg-slate-900 h-screen p-10'>
+            <div className='flex justify-center'>
+                <div className='flex justify-center w-1/2 relative p-0'>
+                    <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} className='relative rounded-md' style={{ objectFit: 'cover' }} fill />
+                    {/* <div className="absolute inset-0 bg-slate-900 opacity-70 z-10"></div> */}
                 </div>
-                <div className='text-white flex w-1/2 '>
+                <div className='text-white flex w-1/2 p-0 '>
                     <div className='flex flex-col'>
                         <div className='flex text-3xl py-3 text-yellow-300 hover:opacity-80'>
-                            {data.title.toUpperCase()}
+                            {data.title}
                         </div>
                         <div className='flex text-lg'>
                             {data.overview}
@@ -41,43 +42,5 @@ const MovieDetail = async ({ params }) => {
         </div>
     )
 }
-    export default MovieDetail
+export default MovieDetail
 
-//         < div className = 'flex bg-slate-900 h-screen' >
-//             <div className='flex'>
-//                 <div className='flex w-1/2 '>
-//                     <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} className='rounded-md pl-20 pb-5' style={{ objectFit: 'cover' }} fill />
-//                 </div>
-//                 <div className='text-white flex w-1/2 '>
-//                     <div className='flex flex-col'>
-//                         <div className='flex text-3xl py-3 text-yellow-300 hover:opacity-80'>
-//                             {data.title.toUpperCase()}
-//                         </div>
-//                         <div className='flex text-lg'>
-//                             {data.overview}
-//                         </div>
-//                         <div className='flex text-lg pt-3'>
-//                             <span className='text-yellow-300'>popularity:&nbsp; </span>
-//                             {data.popularity}
-//                         </div>
-//                         <div className='flex text-lg pt-2'>
-//                             <span className='text-yellow-300'>avarage:&nbsp;</span>
-//                             {data.vote_average}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-// </ >
-
-//     <div className='relative p-7 min-h-screen'>
-//         <Image fill src={`https://image.tmdb.org/t/p/original/${data?.poster_path || data?.backdrop_path}`}
-//             style={{ objectFit: 'cover' }} className='w-100 h-100' />
-//         <div className='absolute'>
-//             <div>{data.title.toUpperCase()}</div>
-//             <div>{data.overview}</div>
-//             <div>{data.popularity}</div>
-//             <div>{data.vote_average}</div>
-//         </div>
-//     </div>
-// )
-// } 

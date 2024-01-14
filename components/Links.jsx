@@ -41,11 +41,11 @@ const Links = () => {
     console.log(selectedItem, "selectedItem")
     return (
         <header className='flex items-center justify-around gap-5 h-20 bg-slate-900 px-3 '>
-            <div className='flex items-center justify-center p-5 m-5 gap-7 '>
+            <div className='flex-column md:flex items-center justify-center p-5 m-5 gap-3 lg:gap-7 '>
                 {
                     tabs1.map((tab, i) => {
                         return (
-                            <Link key={tab.id} href={`/?genre=${tab.url}`} className={`text-neutral-content capitalize cursor-pointer hover:opacity-75 transition-opacity ${tab.url === genre ? "underline underline-offset-8 text-yellow-400" : ""}`}>
+                            <Link key={tab.id} href={`/?genre=${tab.url}`} className={`text-neutral-content text-xs lg:text-lg capitalize cursor-pointer hover:opacity-75 transition-opacity ${tab.url === genre ? "underline underline-offset-8 text-yellow-400" : ""}`}>
                                 {tab.name}
                             </Link>
                         )
@@ -57,7 +57,7 @@ const Links = () => {
                             <Link key={id}
                                 href={`${tab.url}`}
                                 onClick={() => handleItemClick(id, tab.url)}
-                                className={`text-neutral-content capitalize cursor-pointer hover:opacity-75 transition-opacity ${(pathname === tab.url && id === selectedItem) ? "underline underline-offset-8 text-yellow-400" : ""}`}>
+                                className={`text-neutral-content text-xs lg:text-lg overflow-auto capitalize cursor-pointer hover:opacity-75 transition-opacity ${(pathname === tab.url && id === selectedItem) ? "underline underline-offset-8 text-yellow-400" : ""}`}>
                                 {tab.name}
                             </Link>
                         )
