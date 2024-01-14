@@ -14,13 +14,13 @@ const MovieDetail = async ({ params }) => {
     console.log(data)
 
     return (
-        <div className='flex bg-slate-900 w-full h-screen p-10'>
+        <div className='flex bg-slate-900 w-full h-full p-10'>
             <div className='flex justify-center'>
                 <div className='flex-col lg:flex justify-center items-center w-1/2'>
                     <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} 
                     className='rounded-md' style={{width:"500px"}} />
                 </div>
-                <div className='flex-col lg:flex justify-center w-1/2 text-white px-5 lg:px-0 '>
+                <div className='flex-col lg:flex  justify-center w-1/2 text-white px-5 lg:px-0 '>
                     <div className='flex flex-col'>
                         <div className='flex text-3xl py-3 text-yellow-300 hover:opacity-80'>
                             {data.title}

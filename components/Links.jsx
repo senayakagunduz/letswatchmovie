@@ -41,7 +41,7 @@ const Links = () => {
     console.log(selectedItem, "selectedItem")
     return (
         <header className='flex items-center justify-around gap-5 h-20 bg-slate-900 px-3 '>
-            <div className='flex-column md:flex items-center justify-center p-5 m-5 gap-3 lg:gap-7 '>
+            <div className='flex flex-wrap  items-center justify-center p-5 m-5 gap-5 lg:gap-7 '>
                 {
                     tabs1.map((tab, i) => {
                         return (

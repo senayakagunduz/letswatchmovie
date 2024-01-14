@@ -1,5 +1,4 @@
 "use client"
-"use client"
 import React, { useState } from 'react'
 import "../app/globals.css"
 import { BiSearch } from 'react-icons/bi'
@@ -13,8 +12,8 @@ const[keyword, setKeyword] = useState("");
 const router=useRouter();
 
 const searchedItem=(e)=>{
-    if(e.key === "Enter" && keyword.length>3){
-        router.push(`/search/${encodeURIComponent(keyword)}`)
+    if(e.key === "Enter" && keyword.length>=3){
+        router.push(`/search/${keyword}`)
         setKeyword("");
     }
 }
