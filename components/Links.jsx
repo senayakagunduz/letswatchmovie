@@ -10,9 +10,9 @@ const Links = () => {
     const genre = searchParams.get('genre')
     // console.log(genre, 'genre')
     const tabs1 = [
-        { id: 1, name: 'Popular Movies', url: 'popular' },
-        { id: 2, name: 'Top Rated', url: 'top_rated' },
-        { id: 3, name: 'Upcoming', url: 'upcoming' },
+        { id: 1, name: 'Popüler Filmler', url: 'popular' },
+        { id: 2, name: 'En İyiler', url: 'top_rated' },
+        { id: 3, name: 'Yakında', url: 'upcoming' },
     ];
     const tabs2 = [
         { id: 4, name: 'Favoriler', url: 'favorite'},
