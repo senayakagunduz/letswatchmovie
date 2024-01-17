@@ -8,16 +8,16 @@ const Links = () => {
     const [selectedItem, setSelectedItem] = useState(null)
     const searchParams = useSearchParams();
     const genre = searchParams.get('genre')
-    // console.log(genre, 'genre')
+  
     const tabs1 = [
-        { id: 1, name: 'Popüler Filmler', url: 'popular' },
-        { id: 2, name: 'En İyiler', url: 'top_rated' },
-        { id: 3, name: 'Yakında', url: 'upcoming' },
+        { id: 1, name: 'Popular', url: 'popular' },
+        { id: 2, name: 'Top Rated', url: 'top_rated' },
+        { id: 3, name: 'Upcoming', url: 'upcoming' },
     ];
     const tabs2 = [
-        { id: 4, name: 'Favoriler', url: 'favorite'},
-        { id: 5, name: 'Oyuncular', url: 'actors' },
-        { id: 6, name: 'İletişim', url: 'contact' },
+        { id: 4, name: 'Favorites', url: 'favorite'},
+        { id: 5, name: 'Actors', url: 'actors' },
+        { id: 6, name: 'Contact', url: 'contact' },
         
     ];
     const pathname = usePathname();
@@ -38,7 +38,6 @@ const Links = () => {
     useEffect(() => {
 
     }, [pathname])
-    console.log(selectedItem, "selectedItem")
     return (
         <header className='flex items-center justify-around gap-5 h-20 bg-slate-900 px-3 '>
             <div className='flex flex-wrap  items-center justify-center p-5 m-5 gap-5 lg:gap-7 '>

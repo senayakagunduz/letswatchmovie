@@ -10,7 +10,6 @@ const Movie = () => {
     const loadData = async () => {
         try {
             const response = await axios.get(`${Base_URL}?api_key=${Api_KEY}`)
-            setMovieList(response.data)
             setMovieList(response.data.results)
         } catch (error) {
             console.log("Error while fetching data", error)
@@ -33,8 +32,3 @@ const Movie = () => {
 }
 
 export default Movie
-// const getMovie=()=>{
-//     fetch("https://api.themoviedb.org/3/discover/movie?api_key=2c087fb57b5e12832adb7a369c13a2ce")
-//     .then(resp=>resp.json())
-//     .then(json=>setMovieList(json.results))
-// }

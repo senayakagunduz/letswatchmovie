@@ -19,7 +19,7 @@ const Carousel = () => {
     
         try {
             const response = await axios.get(`${Base_URL}?api_key=${Api_KEY}`)
-            setMovieList(response.data)
+            // setMovieList(response.data)
             setMovieList(response.data.results)
         } catch (error) {
             console.log("Error while fetching data", error)
@@ -28,7 +28,7 @@ const Carousel = () => {
     useEffect(() => {
         loadData()
     }, [])
-    console.log(movieList)
+    console.log(movieList,"movielist")
     return (
         <div className="carousel flex justify-center w-[1200px] h-[700px] pt-5 pb-10 relative ">
             {

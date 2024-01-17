@@ -1,6 +1,7 @@
 'use client'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Button, Row } from 'react-bootstrap'
 
 
 const Actors = () => {
@@ -41,6 +42,11 @@ const Actors = () => {
             </div>
           ))
         }
+        <div>
+          <Row>
+            <Button>heyy</Button>
+          </Row>
+        </div>
     </div>
   )
 }

@@ -18,13 +18,13 @@ const ContactForm = () => {
         message: "",
     }
     const validationSchema = Yup.object({
-        name: Yup.string().required("Adınızı giriniz"),
+        name: Yup.string().required("Enter your name"),
         email: Yup.string()
             .email("Enter a valid email")
             .required("Email is required"),
-        subject: Yup.string().required("Lütfen konuyu seçiniz"),
-        phone: Yup.string().required("Geçerli bir telefon numarası giriniz"),
-        message: Yup.string().required("Mesajınızı giriniz")
+        subject: Yup.string().required("Choose the topic"),
+        phone: Yup.string().required("Enter valid phone number"),
+        message: Yup.string().required("Write the message")
     })
     const onSubmit = async (values) => {
         setLoading(true);
@@ -38,7 +38,7 @@ const ContactForm = () => {
             Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Mesajınız gönderildi",
+                title: "Your message is sent",
                 showConfirmButton: false,
                 timer: 1500
               });
@@ -58,12 +58,12 @@ const ContactForm = () => {
         <>
             <div className='min-w-60 p-5 flex-col justify-center items-center'>
                 <div className='flex-col flex-1 justify-center py-2'>
-                    <h1 className='text-slate-100 text-xl block text-center font-semibold hover:text-yellow-400'>Bizimle iletişime geçin</h1>
+                    <h1 className='text-slate-100 text-xl block text-center font-semibold hover:text-yellow-400'>Contact with us</h1>
                     <hr className='mt-2 text-white font-light' />
                 </div>
                 <form noValidate onSubmit={formik.handleSubmit}>
                     <div className='mt-3 flex flex-col flex-1'>
-                        <label className='flex text-lg text-slate-100'>Ad-Soyad:&nbsp;&nbsp;</label>
+                        <label className='flex text-lg text-slate-100'>Firstname-Lastname:&nbsp;&nbsp;</label>
                         <input
                             type="text"
                             id="name"
@@ -96,14 +96,14 @@ const ContactForm = () => {
                             data-isvalid={formik.touched.subject && !formik.errors.subject}
                             isinvalid={formik.touched.subject && !!formik.errors.subject}
                             className={`select select-bordered flex flex-1 ${formik.touched.email && formik.errors.email ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border rounded-md`}>
-                            <option value={"info"}>Bilgi</option>
-                            <option value={"cong"}>Tebrik</option>
-                            <option value={"thanks"}>Teşekkür</option>
-                            <option value={"complaint"}>Şikayet</option>
+                            <option value={"info"}>Info</option>
+                            <option value={"cong"}>Greetings</option>
+                            <option value={"thanks"}>Thanks</option>
+                            <option value={"complaint"}>Complaint</option>
                         </select>
                     </div>
                     <div className='mt-3 flex flex-col flex-1'>
-                        <label htmlFor="phone" className='flex  text-lg text-slate-100 '>Telefon:&nbsp;&nbsp;</label>
+                        <label htmlFor="phone" className='flex  text-lg text-slate-100 '>Phone:&nbsp;&nbsp;</label>
                         <input
                             type="number"
                             placeholder='phone'
@@ -116,7 +116,7 @@ const ContactForm = () => {
                         />
                     </div>
                     <div className='mt-3 flex flex-col flex-1'>
-                        <label htmlFor="message" className='flex text-lg text-slate-100'>Mesaj:&nbsp;&nbsp;</label>
+                        <label htmlFor="message" className='flex text-lg text-slate-100'>Message:&nbsp;&nbsp;</label>
                         <textarea
                             type="text"
                             placeholder='message'
@@ -135,7 +135,7 @@ const ContactForm = () => {
                             <button
                                 type="submit"
                                 className='border-2 border-yellow-400 bg-yellow-400 rounded-lg text-black px-5 py-2 text-md font-semibold hover:bg-transparent hover:text-yellow-400'>
-                                Gönder
+                                Submit
                             </button>
                         )}
 
@@ -148,12 +148,3 @@ const ContactForm = () => {
 }
 
 export default ContactForm
-{/* {formik.touched.name && formik.errors.name && <p className="text-red-500 text-xs mt-1">{formik.errors.name}</p>} */ }
-
-// const dto = {
-//     name: values.name,
-//     email: values.email,
-//     subject: values.subject,
-//     phone: values.phone,
-//     message: values.message,
-// }

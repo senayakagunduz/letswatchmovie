@@ -19,7 +19,7 @@ const searchedItem=(e)=>{
 }
     const menus=[
         {
-            name:"Bize Yazın",
+            name:"Contact us",
             url:"/contact"
         },
        

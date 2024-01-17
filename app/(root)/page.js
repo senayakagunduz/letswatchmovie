@@ -1,6 +1,5 @@
 import Carousel from "@/components/Carousel";
 import MovieCard from "@/components/MovieCard";
-import Spacer from "@/components/Spacer";
 import React from 'react'
 
 
