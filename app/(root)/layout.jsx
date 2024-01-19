@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Links from "@/components/Links";
 
@@ -7,7 +6,9 @@ export default function layout ({children}){
         <div>
             <Header/>
             <Links/>
-            <main>{children}</main>
+            <main className="bg-slate-900 mx-auto pt-10 min-h-screen" >
+                {children}
+            </main>
         </div>
     )
 }

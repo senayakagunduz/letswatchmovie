@@ -35,7 +35,7 @@ const searchedItem=(e)=>{
                 value={keyword}
                 onKeyDown={searchedItem}
                 onChange={(e)=>setKeyword(e.target.value)}
-                placeholder="Arama yapınız!" 
+                placeholder="Search!" 
                 className="flex-1 input cursor-pointer outline-none" />
                 <BiSearch size={25} />
             </div>
