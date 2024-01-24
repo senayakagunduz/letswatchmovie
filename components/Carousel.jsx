@@ -30,11 +30,11 @@ const Carousel = () => {
     }, [])
     console.log(movieList,"movielist")
     return (
-        <div className="carousel flex justify-center w-[1200px] h-[700px] pt-5 pb-10 relative ">
+        <div className="carousel flex justify-center w-full h-[700px] pt-5 pb-10  ">
             {
                 movieList.map((movie,index) => (
-                    <div id={movie.id} key={movie.id} className={`carousel-item absolute w-full transform transition-transform duration-300 ${index===currentIndex ? 'opacity-100 translate-x-0':'opacicity-0 translate-x-full'}`}>
-                        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path}`} className="w-full h-full object-cover rounded-lg" />
+                    <div id={movie.id} key={movie.id} className={`flex carousel-item relative w-full  transition duration-700 ease-in-out ${index===currentIndex ? 'opacity-100 translate-x-0':'opacicity-0 translate-x-full'}`}>
+                        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path}`} className="flex w-full h-full object-cover rounded-lg" />
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                             <div onClick={handlePrev} className="btn btn-circle hover:text-yellow-500">❮</div>
                             <div onClick={handleNext} className="btn btn-circle  hover:text-yellow-500">❯</div>

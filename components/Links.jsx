@@ -9,14 +9,15 @@ const Links = () => {
     const [selectedItem, setSelectedItem] = useState(null)
      const searchParams = useSearchParams();
      const genre = searchParams.get('genre')
-    
+     
   
     console.log(genre)
     
     const tabs1 = [
-        { id: 1, name: 'Popular', url: 'popular' },
-        { id: 2, name: 'Top Rated', url: 'top_rated' },
+        { id: 1, name: 'Popular', url: 'popular' },     
+        { id: 2, name: 'Top Rated', url: 'top_rated' },     
         { id: 3, name: 'Upcoming', url: 'upcoming' },
+     
     ];
     const tabs2 = [
         { id: 4, name: 'Favorites', url: 'favorite'},
@@ -24,6 +25,7 @@ const Links = () => {
         { id: 6, name: 'Contact', url: 'contact' },
         
     ];
+    
     const pathname = usePathname();
     const router = useRouter();
 
@@ -45,6 +47,7 @@ const Links = () => {
     return (
         <header className='flex items-center justify-around gap-5 h-20 bg-slate-900 px-3 '>
             <div className='flex flex-wrap  items-center justify-center p-5 m-5 gap-5 lg:gap-7 '>
+            
                 {
                     tabs1.map((tab, i) => {
                         return (
