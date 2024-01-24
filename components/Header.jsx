@@ -29,7 +29,7 @@ const searchedItem=(e)=>{
         <header className='flex items-center justify-around gap-10 h-20 bg-slate-900 px-7 pt-6 '>
             <button className='hidden lg:block cursor-pointer p-3 text-xl border-2 border-yellow-400 bg-yellow-400 text-black rounded-lg hover:bg-transparent  hover:text-yellow-400 font-bold'>
                 <Link href='/'>Lets Watch Movie</Link></button>
-            <div className='flex flex-1 items-center gap-2 rounded-lg bg-white p-1 cursor-pointer'>
+            <div className='flex flex-1 items-center gap-2 rounded-lg bg-white p-1 cursor-pointer mb-4 lg:mb-0'>
                 <input 
                 type="text"
                 value={keyword}
