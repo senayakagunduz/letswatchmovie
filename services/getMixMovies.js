@@ -19,17 +19,3 @@ export const getMixMovies=async()=>{
 }
 
 
-
-
-
-
-// export const getMixMovies = async () => {
-//     try {
-//         const resp = await axios(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&language=en-US&page=1`);
-//         const data = await resp.json();
-//         return data;
-//     } catch (error) {
-//         console.log(error);
-//         throw error;
-//     }
-// };
