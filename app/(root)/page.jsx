@@ -47,8 +47,7 @@ const Home =  ({searchParams}) => {
                         <MovieCard key={movie.id} movie={movie} />
                     ))
 
-                    }
-                    
+                    }      
                 </div>
             </div>
         </div>
