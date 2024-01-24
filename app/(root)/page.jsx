@@ -1,36 +1,40 @@
+"use client"
 import Carousel from "@/components/Carousel";
 import MovieCard from "@/components/MovieCard";
-import React from 'react'
+import { getMixMovies } from "@/services/getMixMovies";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setMovies, setMovie, getMovies } from "@/redux/movieSlice";
+import { store } from "@/redux/store"; 
+import { fetchMovies } from "@/redux/movieSlice";
+import React, { useEffect, useState} from 'react'
+import { getMoviesByGenre } from "@/services/getMoviesByGenre";
+import { useParams } from "next/navigation";
 
-const getMoviesByGenre = async (genre) => {
-    const resp = await fetch(`https://api.themoviedb.org/3/movie/${genre}?api_key=${process.env.API_KEY}&language=en-US&page=1`, {
-        next: {
-            revalidate: 60
+const Home =  () => {
+    const [genresList,setGenresList] = useState([])
+    const searchParams=useParams();
+    console.log(searchParams,"searchParams")
+    console.log(genresList,"genresList")
+    const dispatch = useDispatch();
+    
+    const movies = useSelector((state) => state.moviesStore.movieList)
+    // console.log(movies)
+
+    useEffect(() => {
+        const loadData=async()=>{
+            try {
+               const movieMix=await getMixMovies();
+               dispatch(getMovies(movieMix));
+               const genresMovies=await getMoviesByGenre(searchParams.genre)
+               setGenresList(genresMovies);
+            } catch (error) {
+                console.log(error)
+            }
         }
-    })
-    const data = await resp.json()
-    return data;
-}
-const getMixMovies = async (genre) => {
-    const resp = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&language=en-US&page=1`, {
-        next: {
-            revalidate: 60
-        }
-    })
-    const data = await resp.json()
-    return data;
-}
+        loadData()
+    }, [dispatch,getMixMovies])
 
-const Home = async ({ searchParams }) => {
-    console.log(searchParams.genre);
-
-    const movieByGenre = getMoviesByGenre(searchParams.genre);
-    const movieMix = getMixMovies();
-
-    const [dataGenre, dataMix] = await Promise.all([
-        movieByGenre, movieMix
-    ])
     return (
         <div className="bg-slate-900">
             <div className="flex items-center justify-center flex-column">
@@ -38,16 +42,12 @@ const Home = async ({ searchParams }) => {
                     searchParams.genre ? null : <Carousel />
                 }
             </div>
-            {/* <Spacer background="bg-slate-900" /> */}
+
             <div className="container flex flex-col gap-6 py-[4rem] mx-auto">
                 <h2 className="text-yellow-300 text-2xl font-semibold pl-8" >{searchParams?.genre?.toUpperCase().replace(/_/g, ' ')}</h2>
                 <div className="flex justify-center gap-10 flex-wrap relative">
                     {
-                        !searchParams.genre ? dataMix?.results?.map((movie) => (
-                            <MovieCard key={movie.id} movie={movie} />
-                        )) : dataGenre?.results?.map((movie) => (
-                            <MovieCard key={movie.id} movie={movie} />
-                        ))
+                      movies.map((movie)=>!searchParams.genre && <MovieCard key={movie.id} movie={movie}/>)
                     }
                 </div>
             </div>
@@ -56,7 +56,33 @@ const Home = async ({ searchParams }) => {
 }
 export default Home
 
-
+  // movies?.map((movie) => (
+                        //     <MovieCard key={movie.id} movie={movie} />))
+                        // !searchParams.genre ? movies?.map((movie) => (
+                            // <MovieCard key={movie.id} movie={movie} />))
+                            // :(<MovieCard key={movies.id} movie={movies} />) 
+ // !searchParams.genre ? movies?.map((movie) => (
+                        //     <MovieCard key={movie.id} movie={movie} />
+                        // )) : searchResult?.map((movie) => (
+                        //     <MovieCard key={movie.id} movie={movie} />
+                        // ))
+// const loadData = async (searchParams) => {
+//     getMixMovies()
+//         .then((movieMix) => {
+//             dispatch(setMovies(movieMix));
+//             console.log(movieMix, "movieMix");
+//         })
+//         .catch((error) => {
+//             console.log(error)
+//         })
+//     getMoviesByGenre(searchParams)
+//         .then((searchParams)=>{
+//             dispatch(setMovie(searchParams));
+//         })
+//         .catch((error)=>{
+//             console.log(error)
+//         })
+// }
 {/* <div className="bg-black flex items-center justify-center">
             <Carousel/>
         </div>
@@ -70,3 +96,19 @@ export default Home
             </div>
         </div> */}
 {/* <Spacer background="black"/> */ }
+
+// const getMixMovies = async (genre) => {
+//     const resp = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+//     const data = await resp.json()
+//     return data;
+// }
+
+// const getMoviesByGenre = async (genre) => {
+//     const resp = await fetch(`https://api.themoviedb.org/3/movie/${genre}?api_key=${process.env.API_KEY}&language=en-US&page=1`, {
+//         next: {
+//             revalidate: 60
+//         }
+//     })
+//     const data = await resp.json()
+//     return data;
+// }

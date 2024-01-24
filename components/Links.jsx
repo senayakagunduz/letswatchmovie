@@ -8,7 +8,8 @@ const Links = () => {
     const [selectedItem, setSelectedItem] = useState(null)
     const searchParams = useSearchParams();
     const genre = searchParams.get('genre')
-  
+    console.log(genre)
+    
     const tabs1 = [
         { id: 1, name: 'Popular', url: 'popular' },
         { id: 2, name: 'Top Rated', url: 'top_rated' },

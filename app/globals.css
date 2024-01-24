@@ -3,3 +3,8 @@
 @tailwind utilities;
 @import '~bootstrap/dist/css/bootstrap.min.css';
 /* import 'bootstrap/dist/js/bootstrap.bundle.min.js'; kullanmak istediğin komponente koy */
+@layer components{
+    .align-element{
+        @apply mx-auto max-w-6xl px-6;
+    }
+}
