@@ -19,7 +19,7 @@ const Home =  () => {
     const dispatch = useDispatch();
     
     const movies = useSelector((state) => state.moviesStore.movieList)
-    // console.log(movies)
+     console.log(movies,"movieList")
 
     useEffect(() => {
         const loadData=async()=>{
