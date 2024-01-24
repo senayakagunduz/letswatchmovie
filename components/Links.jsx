@@ -5,9 +5,12 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 const Links = () => {
+    
     const [selectedItem, setSelectedItem] = useState(null)
-    const searchParams = useSearchParams();
-    const genre = searchParams.get('genre')
+     const searchParams = useSearchParams();
+     const genre = searchParams.get('genre')
+    
+  
     console.log(genre)
     
     const tabs1 = [
@@ -48,6 +51,7 @@ const Links = () => {
                             <Link key={tab.id} href={`/?genre=${tab.url}`} className={`text-neutral-content text-xs lg:text-lg capitalize cursor-pointer hover:opacity-75 transition-opacity ${tab.url === genre ? "underline underline-offset-8 text-yellow-400" : ""}`}>
                                 {tab.name}
                             </Link>
+                           
                         )
                     })
                 }

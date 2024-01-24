@@ -1,11 +1,11 @@
 'use client'
-
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const MovieCard = ({ movie }) => {
     // console.log(movie,"moviecard")
  
- 
+    const router = useRouter();
     const imageUrl = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
 
     return (

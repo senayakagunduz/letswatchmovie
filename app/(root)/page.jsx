@@ -4,17 +4,13 @@ import MovieCard from "@/components/MovieCard";
 import { getMixMovies } from "@/services/getMixMovies";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setMovies, setMovie, getMovies } from "@/redux/movieSlice";
-import { store } from "@/redux/store"; 
-import { fetchMovies } from "@/redux/movieSlice";
+import {  getMovies } from "@/redux/movieSlice";
 import React, { useEffect, useState} from 'react'
 import { getMoviesByGenre } from "@/services/getMoviesByGenre";
-import { useParams } from "next/navigation";
 
-const Home =  () => {
+const Home =  ({searchParams}) => {
     const [genresList,setGenresList] = useState([])
-    const searchParams=useParams();
-    console.log(searchParams,"searchParams")
+    console.log(searchParams.genre,"searchParams.genre")
     console.log(genresList,"genresList")
     const dispatch = useDispatch();
     
@@ -47,8 +43,15 @@ const Home =  () => {
                 <h2 className="text-yellow-300 text-2xl font-semibold pl-8" >{searchParams?.genre?.toUpperCase().replace(/_/g, ' ')}</h2>
                 <div className="flex justify-center gap-10 flex-wrap relative">
                     {
-                      movies.map((movie)=>!searchParams.genre && <MovieCard key={movie.id} movie={movie}/>)
+                       !searchParams.genre ? movies?.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    )) : genresList?.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    ))
+
+                    //   movies.map((movie)=>!searchParams.genre && <MovieCard key={movie.id} movie={movie}/>)
                     }
+                    
                 </div>
             </div>
         </div>
